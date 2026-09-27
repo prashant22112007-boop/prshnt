@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I'm Sorry ❤️</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    background:
+        radial-gradient(circle at 70% 20%, #253b73 0%, #10152f 35%, #050713 75%);
+    position: relative;
+}
+
+/* ---------------- MOON ---------------- */
+
+.moon {
+    position: absolute;
+    top: 55px;
+    right: 70px;
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%,
+        #fffde7,
+        #fff3b0 55%,
+        #ffd66b);
+    box-shadow:
+        0 0 25px #fff4b0,
+        0 0 60px rgba(255, 238, 150, .7);
+}
+
+/* Moon craters */
+.moon::before {
+    content: "";
+    position: absolute;
+    width: 22px;
+    height: 15px;
+    border-radius: 50%;
+    background: rgba(210,190,130,.3);
+    top: 30px;
+    left: 25px;
+    box-shadow:
+        35px 25px 0 rgba(210,190,130,.25),
+        10px 65px 0 rgba(210,190,130,.2),
+        55px 65px 0 rgba(210,190,130,.18);
+}
+
+/* ---------------- STARS ---------------- */
+
+.star {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 8px white;
+    animation: blink 2s infinite alternate;
+}
+
+.s1 { top: 12%; left: 12%; }
+.s2 { top: 25%; left: 30%; animation-delay: .5s; }
+.s3 { top: 15%; left: 55%; animation-delay: 1s; }
+.s4 { top: 38%; left: 75%; animation-delay: .3s; }
+.s5 { top: 10%; left: 82%; animation-delay: .8s; }
+.s6 { top: 45%; left: 45%; animation-delay: 1.2s; }
+
+@keyframes blink {
+    from { opacity: .2; transform: scale(.6); }
+    to { opacity: 1; transform: scale(1.5); }
+}
+
+/* ---------------- TEXT ---------------- */
+
+.content {
+    position: absolute;
+    top: 25%;
+    right: 8%;
+    width: 48%;
+    text-align: center;
+    z-index: 10;
+}
+
+.title {
+    font-size: clamp(50px, 7vw, 100px);
+    font-weight: bold;
+    font-family: cursive;
+    color: #ff77b7;
+    text-shadow:
+        0 0 10px #ff4fa3,
+        0 0 30px #ff2c91,
+        0 0 60px #ff1788;
+    animation: titleGlow 2s infinite alternate;
+}
+
+.heart {
+    color: #ff6fae;
+    animation: heartbeat 1.2s infinite;
+}
+
+.message {
+    margin-top: 25px;
+    font-size: clamp(20px, 2.5vw, 34px);
+    line-height: 1.6;
+    color: #ffe4f1;
+    text-shadow: 0 0 12px #ff75b5;
+}
+
+.small {
+    margin-top: 20px;
+    font-size: clamp(16px, 1.7vw, 24px);
+    color: #ffd2e8;
+}
+
+@keyframes titleGlow {
+    from {
+        text-shadow: 0 0 10px #ff4fa3;
+    }
+    to {
+        text-shadow:
+            0 0 20px #ff4fa3,
+            0 0 50px #ff1687;
+    }
+}
+
+@keyframes heartbeat {
+    50% {
+        transform: scale(1.3);
+    }
+}
+
+/* ---------------- FLOWER AREA ---------------- */
+
+.garden {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 48%;
+    height: 75%;
+}
+
+/* Ground */
+.ground {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(#173d29, #07180f);
+    border-radius: 50% 50% 0 0;
+}
+
+/* ---------------- MAIN FLOWER ---------------- */
+
+.flower {
+    position: absolute;
+    bottom: 130px;
+    left: 43%;
+    width: 230px;
+    height: 230px;
+}
+
+/* Stem */
+.stem {
+    position: absolute;
+    width: 13px;
+    height: 170px;
+    background: linear-gradient(to right, #124d27, #45b85c, #17652e);
+    left: 108px;
+    top: 115px;
+    border-radius: 20px;
+}
+
+/* Center */
+.center {
+    position: absolute;
+    width: 55px;
+    height: 55px;
+    left: 88px;
+    top: 85px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #fff59b, #ffb300);
+    z-index: 20;
+    box-shadow: 0 0 25px #ffd54f;
+}
+
+/* Petal */
+.petal {
+    position: absolute;
+    width: 75px;
+    height: 120px;
+    left: 78px;
+    top: 0;
+    border-radius: 50% 50% 45% 45%;
+    transform-origin: 50% 100%;
+    opacity: 0;
+    z-index: 5;
+}
+
+/* Different petal colours */
+.p1 {
+    background: linear-gradient(#ff4f91, #ffb1d0);
+    animation: open1 2s 1s forwards;
+}
+
+.p2 {
+    background: linear-gradient(#9b59ff, #e1b8ff);
+    animation: open2 2s 1s forwards;
+}
+
+.p3 {
+    background: linear-gradient(#ff8c32, #ffd36b);
+    animation: open3 2s 1s forwards;
+}
+
+.p4 {
+    background: linear-gradient(#48aaff, #b7e5ff);
+    animation: open4 2s 1s forwards;
+}
+
+.p5 {
+    background: linear-gradient(#ff4d4d, #ff9b9b);
+    animation: open5 2s 1s forwards;
+}
+
+.p6 {
+    background: linear-gradient(#e84dff, #ffb5ff);
+    animation: open6 2s 1s forwards;
+}
+
+@keyframes open1 {
+    from { opacity: 0; transform: rotate(0) scale(.2); }
+    to { opacity: 1; transform: rotate(-70deg) scale(1); }
+}
+
+@keyframes open2 {
+    from { opacity: 0; transform: rotate(0) scale(.2); }
+    to { opacity: 1; transform: rotate(-42deg) scale(1); }
+}
+
+@keyframes open3 {
+    from { opacity: 0; transform: rotate(0) scale(.2); }
+    to { opacity: 1; transform: rotate(-15deg) scale(1); }
+}
+
+@keyframes open4 {
+    from { opacity: 0; transform: rotate(0) scale(.2); }
+    to { opacity: 1; transform: rotate(15deg) scale(1); }
+}
+
+@keyframes open5 {
+    from { opacity: 0; transform: rotate(0) scale(.2); }
+    to { opacity: 1; transform: rotate(42deg) scale(1); }
+}
+
+@keyframes open6 {
+    from { opacity: 0; transform: rotate(0) scale(.2); }
+    to { opacity: 1; transform: rotate(70deg) scale(1); }
+}
+
+/* ---------------- LEAVES ---------------- */
+
+.leaf {
+    position: absolute;
+    width: 105px;
+    height: 45px;
+    background: linear-gradient(135deg, #5bd16d, #126b31);
+    border-radius: 100% 0;
+    box-shadow: 0 0 15px rgba(50,255,100,.25);
+}
+
+.leaf1 {
+    left: 5%;
+    bottom: 135px;
+    transform: rotate(-25deg);
+}
+
+.leaf2 {
+    left: 35%;
+    bottom: 180px;
+    transform: rotate(25deg) scale(.8);
+}
+
+.leaf3 {
+    left: 60%;
+    bottom: 120px;
+    transform: rotate(-35deg) scale(.75);
+}
+
+.leaf4 {
+    left: 18%;
+    bottom: 90px;
+    transform: rotate(35deg) scale(.7);
+}
+
+/* ---------------- SMALL FLOWERS ---------------- */
+
+.smallFlower {
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    box-shadow: 0 0 15px currentColor;
+}
+
+.sf1 {
+    left: 8%;
+    bottom: 190px;
+    background: #ff5c8a;
+}
+
+.sf2 {
+    left: 25%;
+    bottom: 230px;
+    background: #8f65ff;
+}
+
+.sf3 {
+    left: 70%;
+    bottom: 190px;
+    background: #ffb52e;
+}
+
+.sf4 {
+    left: 80%;
+    bottom: 245px;
+    background: #42b9ff;
+}
+
+.sf5 {
+    left: 5%;
+    bottom: 270px;
+    background: #ff66d9;
+}
+
+/* Small flower center */
+.smallFlower::after {
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: #ffe26a;
+    border-radius: 50%;
+    top: 15px;
+    left: 15px;
+}
+
+/* ---------------- FLOATING PETALS ---------------- */
+
+.petalFloat {
+    position: absolute;
+    font-size: 25px;
+    animation: float 6s linear infinite;
+}
+
+.f1 { left: 10%; animation-delay: 1s; }
+.f2 { left: 30%; animation-delay: 3s; }
+.f3 { left: 55%; animation-delay: 2s; }
+.f4 { left: 75%; animation-delay: 4s; }
+
+@keyframes float {
+    0% {
+        bottom: -30px;
+        opacity: 0;
+        transform: rotate(0);
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        bottom: 100%;
+        opacity: 0;
+        transform: rotate(360deg);
+    }
+}
+
+/* ---------------- MOBILE ---------------- */
+
+@media (max-width: 700px) {
+
+    .moon {
+        width: 80px;
+        height: 80px;
+        top: 25px;
+        right: 25px;
+    }
+
+    .content {
+        top: 15%;
+        right: 2%;
+        width: 96%;
+    }
+
+    .garden {
+        width: 100%;
+        height: 45%;
+    }
+
+    .flower {
+        transform: scale(.65);
+        left: 30%;
+        bottom: 70px;
+    }
+
+    .message {
+        font-size: 19px;
+    }
+
+    .small {
+        font-size: 16px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Moon -->
+<div class="moon"></div>
+
+<!-- Stars -->
+<div class="star s1"></div>
+<div class="star s2"></div>
+<div class="star s3"></div>
+<div class="star s4"></div>
+<div class="star s5"></div>
+<div class="star s6"></div>
+
+<!-- TEXT -->
+<div class="content">
+
+    <div class="title">
+        I'M SORRY <span class="heart">♥</span>
+    </div>
+
+    <div class="message">
+        Please forgive me for hurting you. 🌸<br>
+        I never wanted to make you sad.
+    </div>
+
+    <div class="small">
+        You are special to me, and I truly care about you. ❤️<br>
+        I hope this little garden brings a smile to your face. 🌙
+    </div>
+
+</div>
+
+<!-- GARDEN -->
+<div class="garden">
+
+    <div class="ground"></div>
+
+    <!-- Main flower -->
+    <div class="flower">
+
+        <div class="petal p1"></div>
+        <div class="petal p2"></div>
+        <div class="petal p3"></div>
+        <div class="petal p4"></div>
+        <div class="petal p5"></div>
+        <div class="petal p6"></div>
+
+        <div class="center"></div>
+        <div class="stem"></div>
+
+    </div>
+
+    <!-- Leaves -->
+    <div class="leaf leaf1"></div>
+    <div class="leaf leaf2"></div>
+    <div class="leaf leaf3"></div>
+    <div class="leaf leaf4"></div>
+
+    <!-- Different colour flowers -->
+    <div class="smallFlower sf1"></div>
+    <div class="smallFlower sf2"></div>
+    <div class="smallFlower sf3"></div>
+    <div class="smallFlower sf4"></div>
+    <div class="smallFlower sf5"></div>
+
+</div>
+
+<!-- Floating petals -->
+<div class="petalFloat f1">🌸</div>
+<div class="petalFloat f2">🌺</div>
+<div class="petalFloat f3">🌷</div>
+<div class="petalFloat f4">🌸</div>
+
+</body>
+</html>
